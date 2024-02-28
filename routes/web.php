@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShowController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('shows', [ShowController::class, 'index'])
+    ->name('shows');
+
+Route::get('shows/{show}', [ShowController::class, 'view']);
+
+
+Route::get('latest', [ShowController::class, 'latest'])
+    ->name('latest');
 
 Route::get('/', function () {
     return inertia('welcome');
